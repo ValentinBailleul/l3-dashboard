@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Fiche</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fiche.id }}</td>
+            </tr>
+            <tr>
+                <th>Projectname</th>
+                <td>{{ fiche.projectName }}</td>
+            </tr>
+            <tr>
+                <th>Createdby</th>
+                <td>{% if fiche.createdBy %}{{ fiche.createdBy|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fichedate</th>
+                <td>{{ fiche.ficheDate }}</td>
+            </tr>
+            <tr>
+                <th>Nbdaydone</th>
+                <td>{{ fiche.nbDayDone }}</td>
+            </tr>
+            <tr>
+                <th>Nbdatesold</th>
+                <td>{{ fiche.nbDateSold }}</td>
+            </tr>
+            <tr>
+                <th>Progression</th>
+                <td>{{ fiche.progression }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ fiche.comment }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('dashboard') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('fiche_edit', { 'id': fiche.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
